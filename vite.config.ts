@@ -1,15 +1,25 @@
 import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
+export default defineConfig(({ command }) => {
   if (command === 'serve') {
     return {
-      // dev specific config
+      plugins: [tsconfigPaths()],
+      server: {
+        open: true,
+        host: 'localhost',
+        port: 3000,
+      },
+      clearScreen: false,
     };
   } else {
-    // command === 'build'
     return {
-      // build specific config
+      plugins: [tsconfigPaths()],
+      build: {
+        outDir: 'dist',
+        minify: 'terser',
+        sourcemap: true,
+      },
     };
   }
 });
