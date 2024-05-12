@@ -1,4 +1,4 @@
-import './style.css';
+import './style.scss';
 
 const app = document.getElementById('app') as HTMLElement;
 app.innerHTML = `
