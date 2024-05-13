@@ -6,13 +6,14 @@ The ecommerce app is a modern web application built using cutting-edge technolog
 
 ## Technology Stack
 
-<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="24" alt="typescript" /> <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" height="24" alt="vite" /> <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" height="24" alt="jest" /> <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" height="24" alt="eslint" /> <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" height="24" alt="prettier" />
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="24" alt="typescript" /> <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" height="24" alt="vite" /> <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" height="24" alt="jest" /> <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" height="24" alt="eslint" /> <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" height="24" alt="prettier" /> <img src="https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=Sass&logoColor=white" height="24" alt="Sass" />
 
 - **TypeScript**: Used for writing type-safe and maintainable code.
 - **Vite**: A modern development server and build tool that provides fast and efficient development experiences.
 - **Jest**: A popular testing framework for JavaScript applications.
 - **ESLint**: A linter that helps maintain code quality and consistency.
 - **Prettier**: A code formatter that ensures consistent code style.
+- **Sass**: A CSS preprocessor that provides features like variables, nesting, and mixins.
 
 ## Husky Hooks
 
@@ -36,6 +37,9 @@ Starts the Vite development server.
 
 `build`
 Builds the application using Vite.
+
+`serve`
+Starts a static server using the serve package to serve the built application files from the dist directory.
 
 `preview`
 Starts the Vite preview server.
