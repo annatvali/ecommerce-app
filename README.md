@@ -37,6 +37,9 @@ Starts the Vite development server.
 `build`
 Builds the application using Vite.
 
+`serve`
+Starts a static server using the serve package to serve the built application files from the dist directory.
+
 `preview`
 Starts the Vite preview server.
 
