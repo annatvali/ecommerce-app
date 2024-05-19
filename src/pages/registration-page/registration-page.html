@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" href="registration-page.scss">
+</head>
+<body>
+  <section>
+    <h1 class="page-title">Registration</h1>
+    <div class="container">
+      <form id="registration-form" class="registration-form">
+        <label for="email" class="registration-form__label">Email:</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required
+          class="registration-form__input" />
+
+        <label for="password" class="registration-form__label">Password:</label>
+        <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Password must contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter, and 1 number!"
+          placeholder="Pass123!"
+          required class="registration-form__input" />
+
+        <label for="firstName" class="registration-form__label">First Name:</label>
+        <input type="text" id="firstName" name="firstName" pattern="[a-zA-Z]+$"
+          title="First Name contain at least one character and no special characters or numbers"
+          placeholder="John" required
+          class="registration-form__input" />
+
+        <label for="lastName" class="registration-form__label">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" pattern="[a-zA-Z]+$"
+          title="Last Name must contain at least one character and no special characters or numbers"
+          placeholder="Doe" required
+          class="registration-form__input" />
+
+        <label for="dateOfBirth" class="registration-form__label">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" min="1900-01-01" max="3000-12-31" required
+          class="registration-form__input" />
+
+        <fieldset class="address">
+          <legend>Address</legend>
+
+          <label for="street" class="registration-form__label">Street:</label>
+          <input type="text" id="street" name="street" pattern=".{1,}"
+          placeholder="123 Main St" class="registration-form__input" />
+
+          <label for="city" class="registration-form__label">City:</label>
+          <input type="text" id="city" name="city" pattern="[a-zA-Z\s]+$"
+          placeholder="New York" class="registration-form__input" />
+
+          <label for="postalCode" class="registration-form__label">Postal Code:</label>
+          <input type="text" id="postalCode" name="postalCode" pattern="[a-zA-Z0-9\s]+$"
+          placeholder="10001" required class="registration-form__input" />
+
+          <label for="country" class="registration-form__label">Country:</label>
+          <input list="countries" id="country" name="country" required placeholder="Start typing a country..."
+            class="registration-form__input" />
+          <datalist id="countries">
+            <option value="United States">
+            <option value="Canada">
+            <option value="Poland">
+            <option value="Georgia">
+          </datalist>
+        </fieldset>
+
+        <label for="terms" class="registration-form__label">
+          <input type="checkbox" id="terms" name="terms" required class="registration-form__checkbox" />
+          By signing up, you are creating a eCommerce account, and you agree to eCommerce's
+          <a href="#terms-of-use-url" target="_blank">Terms of Use</a> and
+          <a href="#privacy-policy-url" target="_blank">Privacy Policy</a>.
+        </label>
+
+        <button type="submit" class="registration-form__submit disabled">Register</button>
+      </form>
+    </div>
+  </section>
+  <script src="./registration-page.ts"></script>
+</body>
+</html>
