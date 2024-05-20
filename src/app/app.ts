@@ -11,7 +11,7 @@ class App {
     const htmlContent = `
             <h1>E-commerce App</h1>
             <button id="registrationButton">Sign up</button>
-            <button id="loginButton">Login</button>
+            <button id="loginButton">Sign in</button>
         `;
 
     this.appElement.innerHTML = htmlContent;
