@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authorization</title>
+  <link rel="stylesheet" href="login-page.scss">
+</head>
+<body>
+  <section>
+    <h1 class="page-title">Authorization</h1>
+    <div class="container">
+      <form id="login-form" class="login-form">
+        <label for="email" class="login-form__label">Email:</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com"
+          class="login-form__input" />
+
+        <label for="password" class="login-form__label">Password:</label>
+        <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Password must contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter, and 1 number!"
+          placeholder="Pass123!"
+          class="login-form__input" />
+
+        <button type="submit" class="login-form__submit disabled" disabled>Log in</button>
+        <p>Don't have an account yet? <a href="/src/pages/registration-page/registration-page.html">Sign Up</a></p>
+
+      </form>
+    </div>
+  </section>
+  <script typr="module" src="./login-page.ts"></script>
+</body>
+</html>
