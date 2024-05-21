@@ -1,3 +1,5 @@
+// import { ctpClient } from '../../api/api-client';
+
 const container = document.querySelector('.container') as HTMLElement;
 const form = document.getElementById('login-form') as HTMLFormElement;
 const submitButton = document.querySelector(
@@ -116,7 +118,6 @@ form.querySelectorAll('input').forEach(input => {
 
 form.addEventListener('submit', async event => {
   event.preventDefault();
-
   const formData = new FormData(form);
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
@@ -129,7 +130,7 @@ form.addEventListener('submit', async event => {
   //Login if form is valid
   if (isFormValid) {
     const projectKey = 'onlineshopproject1234';
-    const token = 'cHgA9vQ0lWNyYUQMFb79GisBCBH62MXW';
+    const token = localStorage.getItem('anonimousToken');
     console.log(email);
     console.log(password);
     try {
@@ -151,16 +152,65 @@ form.addEventListener('submit', async event => {
 
       const loginData = await loginResponse.json();
       console.log(loginData.customer.id);
-      console.log(loginData.customer.id);
       displaySuccess();
-      setTimeout(() => {
-        window.location.href = '/';
-      }, 500);
+      login(email, password);
     } catch (error) {
       console.error('Error during login:', error);
       const errors: { [key: string]: string } = {};
       errors.login = 'Email or password is incorrect.';
       displayErrors(errors);
+    }
+  }
+
+  async function getAccessTokenWithPasswordFlow(
+    clientId: string,
+    clientSecret: string,
+    projectKey: string,
+    username: string,
+    password: string,
+  ): Promise<string> {
+    const authUrl = `https://auth.europe-west1.gcp.commercetools.com/oauth/${projectKey}/customers/token`;
+
+    const response = await fetch(authUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Basic ' + btoa(`${clientId}:${clientSecret}`),
+      },
+      body: new URLSearchParams({
+        grant_type: 'password',
+        username: username,
+        password: password,
+      }).toString(),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch access token');
+    }
+
+    const data = await response.json();
+    return data.access_token;
+  }
+
+  async function login(username: string, password: string): Promise<void> {
+    const clientId = 'J3MmPF5dnCOvDIVW87gmE0rj';
+    const clientSecret = 'eqvBX45b6qFK6COENtqxnmZQED7dNduF';
+    const projectKey = 'onlineshopproject1234';
+
+    try {
+      const token = await getAccessTokenWithPasswordFlow(
+        clientId,
+        clientSecret,
+        projectKey,
+        username,
+        password,
+      );
+      localStorage.setItem('authToken', token);
+      console.log('Auth token saved to localStorage:', token);
+
+      window.location.href = '/src/pages/main-page/main-page.html';
+    } catch (error) {
+      console.error('Error during login:', error);
     }
   }
 });
