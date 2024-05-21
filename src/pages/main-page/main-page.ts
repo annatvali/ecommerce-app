@@ -1,5 +1,3 @@
-// main-page.ts
-
 document.addEventListener('DOMContentLoaded', () => {
   const mainPageElement = document.getElementById('mainPage');
 
