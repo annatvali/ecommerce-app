@@ -1,4 +1,5 @@
 import App from './app/app';
 import './style.scss';
 
-new App();
+const authService = new App();
+authService.login();
