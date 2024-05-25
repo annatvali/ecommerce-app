@@ -1,0 +1,266 @@
+// Variables
+$primary-color: #1E40AF;
+$secondary-color: #6B7280;
+$success-color: #22C55E;
+$error-color: #F43F5E;
+$input-bg-color: #F9FAFB;
+$input-border-color: #E5E7EB;
+$background-input: linear-gradient(to top, #f9f9f9, #fff 33%);
+$shadow-input: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+
+
+$font-sm: 0.875rem;
+$font-md: 1rem;
+$font-lg: 1.25rem;
+$font-xl: 1.5rem;
+
+
+$border-rad-sm: 0.25rem;
+$border-rad-md: 0.375rem;
+$border-rad-lg: 0.5rem;
+
+$margin-block-sm: 0.5rem;
+$margin-block-md: 1rem;
+$margin-block-lg: 1.5rem;
+
+$padding-sm: 0.5rem;
+$padding-md: 1rem;
+$padding-lg: 1.5rem;
+
+// Mixins
+@mixin input-style($border-color: $input-border-color) {
+  border: 1px solid $border-color;
+  border-radius: $border-rad-md;
+  padding: $padding-md;
+  font-size: $font-sm;
+  line-height: 1.5;
+  color: $secondary-color;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@mixin button ($bg-color: $primary-color, $color: $input-bg-color) {
+  cursor: pointer;
+  background-color: $primary-color;
+  color: $input-bg-color;
+  border-radius: $border-rad-md;
+  font-size: $font-lg;
+  font-weight: semi-bold;
+  line-height: 1.5;
+  padding: $padding-md;
+  transition: background-color 0.15s ease-in-out;
+}
+
+@mixin display-flex(
+  $direction: row,
+  $justify: center,
+  $align: center,
+  $wrap: nowrap,
+  $gap: 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin input-focus {
+  border-color: $primary-color;
+}
+
+@mixin input-success {
+  border-color: $success-color;
+}
+
+@mixin input-error {
+  border-color: $error-color;
+}
+
+// Common
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  border: none;
+}
+
+.container {
+  padding: 0 2em;
+  max-width: 1800px;
+  margin: 0 auto;
+  @include display-flex();
+  background: #f9f9f9;
+}
+
+// Registration Page
+.page-title {
+  color: $primary-color;
+  text-align: center;
+}
+
+.registration-form {
+  max-width: 480px;
+  margin-block: 2rem;
+
+  &__label {
+  color: $primary-color;
+  font-weight: 700;
+  }
+
+  &__input {
+    border: 1px solid $input-border-color;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: $secondary-color;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-bottom: 0.8em;
+  }
+
+  &__submit {
+    @include button;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    &:focus {
+      outline: none;
+      @include input-focus;
+    }
+
+    &.input-success {
+      @include input-success;
+    }
+
+    &.input-error {
+      @include input-error;
+    }
+  }
+}
+
+.input-group {
+  position: relative;
+
+  label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+
+  input {
+    @include display-flex(row, flex-start);
+    width: 100%;
+    padding: 10px;
+    border: 3px solid transparent;
+  }
+
+  p {
+    margin: 12px 0;
+    color: $error-color;
+    visibility: hidden;
+  }
+
+  .icon {
+    position: absolute;
+    right: 15px;
+    top: calc(100% - 3.8em);
+    visibility: hidden;
+  }
+
+  &_checkbox {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 1em;
+
+    background-image: $background-input;
+    box-shadow: $shadow-input;
+    padding: 8px;
+    border-radius: 6px;
+    div {
+      @include display-flex();
+    }
+  }
+}
+
+.address {
+  @include display-flex(column, flex-start, flex-start, nowrap, 1rem);
+  border: 1px solid $input-border-color;
+  border-radius: $border-rad-md;
+  margin-block: 1.5rem;
+
+  & legend {
+    font-size: $font-lg;
+    font-weight: 600;
+    color: $secondary-color;
+    margin-bottom: 1rem;
+  }
+
+  & input {
+    margin-bottom: 0.5rem;
+  }
+
+  .icon {
+    right: 1.5em;
+    top: 40%;
+    transform: translateY(-50%);
+  }
+}
+
+.error {
+
+  input {
+    border: 3px solid $error-color;
+  }
+
+  .icon-error {
+    visibility: visible;
+  }
+
+  p {
+    visibility: visible;
+  }
+}
+
+.success {
+
+  input {
+    border: 3px solid $success-color;
+  }
+
+  .icon-success{
+    visibility: visible;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.select-group {
+  cursor: pointer;
+  width: 100%;
+  min-width: 100px;
+  max-width: 100%;
+  border: 1px solid $input-border-color;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  background-color: $input-bg-color;
+  background-image: $background-input;
+  box-shadow: $shadow-input;
+}
+

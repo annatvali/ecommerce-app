@@ -4,24 +4,33 @@ import {
   type AuthMiddlewareOptions,
   type HttpMiddlewareOptions,
 } from '@commercetools/sdk-client-v2';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+function getEnvVariable(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Environment variable ${name} is not set`);
+  }
+  return value;
+}
 
 // Configure authMiddlewareOptions
 const authMiddlewareOptions: AuthMiddlewareOptions = {
-  host: 'https://auth.europe-west1.gcp.commercetools.com',
-  projectKey: 'onlineshopproject1234',
+  host: getEnvVariable('CTP_AUTH_URL'),
+  projectKey: getEnvVariable('CTP_PROJECT_KEY'),
   credentials: {
-    clientId: 't4euZTdm0jIdAkN7mOgP5-iB',
-    clientSecret: '7ryQg82Y1z3QSHRomQ9NeDV9y0_11-ax',
+    clientId: getEnvVariable('CTP_CLIENT_ID'),
+    clientSecret: getEnvVariable('CTP_CLIENT_SECRET'),
   },
-  scopes: [
-    'manage_my_payments:onlineshopproject1234 manage_my_shopping_lists:onlineshopproject1234 create_anonymous_token:onlineshopproject1234 manage_my_orders:onlineshopproject1234 view_categories:onlineshopproject1234 manage_my_quotes:onlineshopproject1234 manage_my_quote_requests:onlineshopproject1234 manage_my_profile:onlineshopproject1234 manage_my_business_units:onlineshopproject1234 view_published_products:onlineshopproject1234',
-  ],
+  scopes: [getEnvVariable('CTP_SCOPES')],
   fetch,
 };
 
 // Configure httpMiddlewareOptions
 const httpMiddlewareOptions: HttpMiddlewareOptions = {
-  host: 'https://api.europe-west1.gcp.commercetools.com',
+  host: getEnvVariable('CTP_API_URL'),
   fetch,
 };
 

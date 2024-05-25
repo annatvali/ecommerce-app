@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" href="registration-page.scss">
+</head>
+<body>
+  <section>
+    <h1 class="page-title">Registration</h1>
+    <div class="container">
+      <form id="registration-form" class="registration-form">
+        <div class="input-group">
+          <label for="email" class="registration-form__label">Email:</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" class="registration-form__input" />
+          <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+          <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+          <p>ERROR MESSAGE</p>
+        </div>
+
+        <div class="input-group">
+          <label for="password" class="registration-form__label">Password:</label>
+          <input type="password" id="password" name="password" placeholder="Pass123!" class="registration-form__input" />
+          <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+          <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+          <p>ERROR MESSAGE</p>
+        </div>
+
+        <div class="input-group">
+          <label for="firstName" class="registration-form__label">First Name:</label>
+          <input type="text" id="firstName" name="firstName"
+            title="First Name contain at least one character and no special characters or numbers" placeholder="John"
+            class="registration-form__input" />
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+        </div>
+
+        <div class="input-group">
+          <label for="lastName" class="registration-form__label">Last Name:</label>
+          <input type="text" id="lastName" name="lastName"
+            title="Last Name must contain at least one character and no special characters or numbers" placeholder="Doe"
+            class="registration-form__input" />
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+        </div>
+
+        <div class="input-group">
+          <label for="dateOfBirth" class="registration-form__label">Date of Birth:</label>
+          <input type="date" id="dateOfBirth" name="dateOfBirth"
+            class="registration-form__input" />
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+        </div>
+
+        <fieldset class="address">
+          <legend>Address</legend>
+          <div class="input-group">
+            <label for="country">Country</label>
+            <select class="select-group" name="country" id="country" size="1">
+              <option value="" selected="sected"> Select Country </option>
+            </select>
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+          </div>
+
+          <div class="input-group">
+            <label for="city">City</label>
+            <select class="select-group" name="city" id="city">
+              <option value="" selected="selected"> Select City </option>
+            </select>
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+          </div>
+
+          <div class="input-group">
+            <label for="postalCode">Zip Code</label>
+            <select class="select-group" name="postalCode" id="postalCode">
+              <option value="" selected="selected"> Select Zip </option>
+            </select>
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+          </div>
+
+          <div class="input-group">
+            <label for="street" class="registration-form__label">Street Name:</label>
+            <input type="text" id="street" name="street" placeholder="Main Street" class="registration-form__input" />
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+          </div>
+
+          <div class="input-group">
+            <label for="streetNumber" class="registration-form__label">Street Number #:</label>
+            <input type="text" id="streetNumber" name="streetNumber" placeholder="12/4 or 9" class="registration-form__input" />
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+          </div>
+        </fieldset>
+
+        <div class="input-group input-group_checkbox">
+          <input type="checkbox" id="terms" name="terms" class="registration-form__checkbox" />
+          <div>
+            <label for="terms" class="registration-form__label">By signing up, you are creating a eCommerce account, and you agree
+              to eCommerce's
+              <a href="#terms-of-use-url" target="_blank">Terms of Use</a> and
+              <a href="#privacy-policy-url" target="_blank">Privacy Policy</a></label>
+            <img class="icon icon-success" src="../../assets/icons/success.svg" width="16" height="16" alt="valid input">
+            <img class="icon icon-error" src="../../assets/icons/error.svg" width="16" height="16" alt="invalid input">
+            <p>ERROR MESSAGE</p>
+          </div>
+        </div>
+
+        <button id="registration-form-btn" type="submit" class="registration-form__submit disabled">Register</button>
+      </form>
+    </div>
+  </section>
+  <script type="module" src="./registration-page.ts"></script>
+</body>
+</html>
