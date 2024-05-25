@@ -18,7 +18,7 @@ const postalCodeInput = document.getElementById(
 ) as HTMLSelectElement;
 const countryInput = document.getElementById('country') as HTMLSelectElement;
 const termsCheckbox = document.getElementById('terms') as HTMLInputElement;
-const submitButton = document.getElementById(
+const registrationFormBtn = document.getElementById(
   'registration-form-btn',
 ) as HTMLButtonElement;
 
@@ -316,7 +316,7 @@ for (const input of registrationFormInputs) {
     }
 
     // Update submit button state
-    updateSubmitButtonState();
+    updateRegistrationBtnState();
   });
 }
 
@@ -352,11 +352,11 @@ function validateRegistrationFormInputs() {
   }
 }
 
-function updateSubmitButtonState() {
+function updateRegistrationBtnState() {
   if (allInputsValid()) {
-    submitButton.classList.remove('disabled');
+    registrationFormBtn.classList.remove('disabled');
   } else {
-    submitButton.classList.add('disabled');
+    registrationFormBtn.classList.add('disabled');
   }
 }
 
@@ -380,9 +380,9 @@ if (allInputsValid()) {
 
   console.log(data);
 
-  submitButton.classList.remove('disabled');
+  registrationFormBtn.classList.remove('disabled');
 } else {
-  submitButton.classList.add('disabled');
+  registrationFormBtn.classList.add('disabled');
 }
 
 if (registrationForm) {
@@ -391,7 +391,7 @@ if (registrationForm) {
 
     validateRegistrationFormInputs();
 
-    updateSubmitButtonState();
+    updateRegistrationBtnState();
 
     if (allInputsValid()) {
       const data = {
