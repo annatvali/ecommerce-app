@@ -1,20 +1,25 @@
 ## Task/subtask title
+
 1. Task: [link](https://github.com/rolling-scopes-school/js-fe-course-en/blob/main/tasks/eCommerce-Application/Sprints/Sprint%231.md)
 2. Deploy: [link]()
 3. Done/Deadline: 06.05.2024/06.05.2024
 4. Score: 150/150
 
 ### Description
-- Describe the  improvements brought by these changes.
+
+- Describe the improvements brought by these changes.
 
 ### Change Detailes
- - List specific changes
- - Screenshots:
+
+- List specific changes
+- Screenshots:
 
 ### Rationale
- - Reasons behind the changes
 
-### Check criteria: 
+- Reasons behind the changes
+
+### Check criteria:
+
 1. Repository Setup (29 points) 🧐
    - [ ] (10 points) Create a GitHub repository for the project, complete with a README file, .gitignore, and necessary dependencies. RSS-ECOMM-1_01 📚
    - [ ] (10 points) Set up a clear and organized folder structure within the repository, ensuring a maintainable and scalable codebase. RSS-ECOMM-1_02 🏗️
