@@ -4,4 +4,4 @@ const jestConfig = {
   testEnvironment: 'jsdom',
 };
 
-export default jestConfig;
+module.exports = jestConfig;

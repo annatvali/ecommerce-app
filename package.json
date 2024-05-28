@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "description": "E-commerce app",
-  "type": "module",
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watch",
