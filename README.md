@@ -4,6 +4,16 @@
 
 This project is a simple e-commerce application built with NextJS and TailwindCSS. The project aims to provide a seamless shopping experience for users, with a focus on performance, scalability, and maintainability. The application allows users to browse products, add items to their cart, and complete the checkout process.
 
+### The application includes the following pages:
+
+- **Home**: The main page of the application.
+- **Registration and Login**: Allows new users to register and existing users to log in.
+- **Catalog Product Page**: Displays a catalog of all available products.
+- **Detailed Product Page**: Provides detailed information about a specific product.
+- **User Profile Page**: Allows users to view and update their profile information.
+- **Basket Page**: Allows users to view their selected items and proceed to checkout.
+- **About Us Page**: Provides information about the company and the team behind the application.
+
 ## Technology Stack
 
 <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" height="24" alt="nextjs" /> <img src="https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white&style=for-the-badge" height="24" alt="reactjs" /> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="24" alt="typescript" /> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7vPlcs32Rlq4qstSmL7dg-tiWKAcnkK2qByMGb_IZZA&s" height="24" alt="commercetools" /> <img src="https://img.shields.io/badge/commercetools-typesscript_SDK-%236359ff" height="24" alt="commercetools-typescript-sdk" /> <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" height="24" alt="jest" /> <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" height="24" alt="eslint" /> <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" height="24" alt="prettier" /> <img src="https://img.shields.io/badge/Husky%20%F0%9F%90%95-blue" height="24" alt="husky" /> <img src="https://img.shields.io/badge/lint_staged-yellow" height="24" alt="lint-staged" /> <img src="https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss" height="24" alt="tailwindcss"/> <img src="https://img.shields.io/badge/autoprefixer-purple" height="24" alt="autoprefixer" />
@@ -27,19 +37,16 @@ This project is a simple e-commerce application built with NextJS and TailwindCS
 Runs Jest tests with coverage reporting.
 
 `test:watch`
-Runs Jest tests in watch mode.
+Runs Jest tests with coverage reporting in watch mode.
 
 `dev`
-Starts the Vite development server.
+Starts the Next.js development server.
 
 `build`
-Builds the application using Vite.
+Builds the application using Next.js.
 
-`serve`
-Starts a static server using the serve package to serve the built application files from the dist directory.
-
-`preview`
-Starts the Vite preview server.
+`start`
+Starts the Next.js application.
 
 `lint`
 Runs ESLint with the configured rules and plugins.
