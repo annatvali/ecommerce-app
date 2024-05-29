@@ -1,6 +1,29 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { login } from './login';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      await login(email, password);
+      router.push('/');
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
+    }
+  };
+
   return (
     <main>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -11,7 +34,8 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            {error && <p className="text-red-500">{error}</p>}
             <div>
               <label
                 htmlFor="email"
@@ -27,6 +51,8 @@ const Login = () => {
                   autoComplete="email"
                   placeholder="example@mail.com"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 focus:outline-none sm:text-sm sm:leading-6"
                 />
               </div>
@@ -48,6 +74,8 @@ const Login = () => {
                   type="password"
                   autoComplete="current-password"
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 focus:outline-none sm:text-sm sm:leading-6"
                 />
               </div>
@@ -74,12 +102,12 @@ const Login = () => {
           </p>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Go back to{' '}
+            Go to{' '}
             <Link
               href="/"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              Home
+              Main
             </Link>{' '}
             page
           </p>
