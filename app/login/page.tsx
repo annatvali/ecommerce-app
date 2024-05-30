@@ -4,19 +4,57 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { login } from './login';
+import { isAuth } from '@/lib/isAuth';
+import Navigation from '../components/Navigation';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const router = useRouter();
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password: string) => {
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{}|;:'",.<>?])[a-zA-Z\d!@#$%^&*()_+\-=[\]{}|;:'",.<>?]{8,}$/;
+    return passwordRegex.test(password);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    setEmailError('');
+    setPasswordError('');
+
+    let valid = true;
+
+    if (!validateEmail(email)) {
+      setEmailError('Invalid email address');
+      valid = false;
+    }
+
+    if (!validatePassword(password)) {
+      setPasswordError(
+        'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number',
+      );
+      valid = false;
+    }
+
+    if (!valid) {
+      return;
+    }
 
     try {
       await login(email, password);
-      router.push('/');
+      isAuth();
+      Navigation;
+      router.push('/catalog');
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -55,6 +93,7 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 focus:outline-none sm:text-sm sm:leading-6"
                 />
+                {emailError && <p className="text-red-500">{emailError}</p>}
               </div>
             </div>
 
@@ -78,6 +117,9 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 focus:outline-none sm:text-sm sm:leading-6"
                 />
+                {passwordError && (
+                  <p className="text-red-500">{passwordError}</p>
+                )}
               </div>
             </div>
 

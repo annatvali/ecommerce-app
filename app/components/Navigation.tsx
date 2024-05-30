@@ -1,40 +1,94 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Button from './Button';
+import { isAuth } from '@/lib/isAuth';
+import { useAuth } from '@/lib/AuthContext';
+import { useEffect } from 'react';
 
 const Navigation = (): JSX.Element => {
+  const router = useRouter();
+  const { isAuthenticated, login, logout } = useAuth();
+
+  const handleLoginClick = async () => {
+    try {
+      const authStatus = await isAuth();
+      if (authStatus) {
+        login();
+        router.push('/catalog');
+      } else {
+        router.push('/login');
+      }
+    } catch (error) {
+      console.error('Error during auth check:', error);
+      router.push('/login');
+    }
+  };
+
+  const handleRegisterClick = async () => {
+    try {
+      const authStatus = await isAuth();
+      if (authStatus) {
+        login();
+        router.push('/catalog');
+      } else {
+        router.push('/registration');
+      }
+    } catch (error) {
+      console.error('Error during auth check:', error);
+      router.push('/registration');
+    }
+  };
+
+  const handleLogoutClick = () => {
+    logout();
+    router.push('/');
+  };
+
+  useEffect(() => {}, [isAuthenticated]);
+
   return (
     <nav className="flex items-center gap-24">
       <ul className="flex space-x-4">
         <li>
-          <a href="/" className="hover:underline">
+          <Link href="/" className="hover:underline">
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/about" className="hover:underline">
+          <Link href="/catalog" className="hover:underline">
+            Catalog
+          </Link>
+        </li>
+        <li>
+          <Link href="/about" className="hover:underline">
             About
-          </a>
-        </li>
-        <li>
-          <a href="/contact" className="hover:underline">
-            Contact
-          </a>
+          </Link>
         </li>
       </ul>
       <div>
-        <Link href="/login/">
+        {isAuthenticated ? (
           <Button
-            text="Login"
-            colorClass="from-purple-600 to-blue-500 hover:bg-gradient-to-bl"
+            text="Logout"
+            colorClass="from-red-600 to-red-500 hover:bg-gradient-to-bl"
+            onClick={handleLogoutClick}
           />
-        </Link>
-        <Link href="/registration">
-          <Button
-            text="Register"
-            colorClass="bg-white hover:bg-gray-100"
-            textColor="text-purple-600"
-          />
-        </Link>
+        ) : (
+          <>
+            <Button
+              text="Login"
+              colorClass="from-purple-600 to-blue-500 hover:bg-gradient-to-bl"
+              onClick={handleLoginClick}
+            />
+            <Button
+              text="Register"
+              colorClass="bg-white hover:bg-gray-100"
+              textColor="text-purple-600"
+              onClick={handleRegisterClick}
+            />
+          </>
+        )}
       </div>
     </nav>
   );
