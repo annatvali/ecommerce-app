@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Button from './Button';
-import { isAuth } from '@/lib/isAuth';
-import { useAuth } from '@/lib/AuthContext';
+import { isAuth } from '@/app/lib/isAuth';
+import { useAuth } from '@/app/lib/AuthContext';
 import { useEffect } from 'react';
 
 const Navigation = (): JSX.Element => {

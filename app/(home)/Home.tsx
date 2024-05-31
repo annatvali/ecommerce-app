@@ -1,13 +1,16 @@
 import Image from 'next/image';
-import Button from '../(components)/Button';
+import Button from '../ui/Button';
+import { roboto } from '@/app/ui/fonts';
 
 const Home = (): JSX.Element => {
   return (
-    <main>
+    <main className="flex flex-col">
       <section className="text-white py-20 px-8">
         <div className="container mx-auto flex flex-col gap-4 md:flex-row items-center justify-between">
           <div className="w-full md:w-1/2 mb-4 md:mb-0">
-            <h1 className="uppercase tracking-wide no-underline hover:no-underline font-bold text-4xl text-blue-900 mb-8">
+            <h1
+              className={`${roboto.className} uppercase tracking-wide no-underline hover:no-underline font-bold text-4xl text-blue-900 mb-8`}
+            >
               Welcome to Our Online Store
             </h1>
             <p className="mb-8 leading-relaxed text-purple-600">
