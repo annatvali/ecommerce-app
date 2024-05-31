@@ -1,18 +1,14 @@
-import React from 'react';
 import Link from 'next/link';
-import Form from '@/app/registration/registration';
 
 const Registration = () => {
   return (
     <main>
-      <div className="mx-2 sm:mx-4 md:mx-8 lg:mx-16 xl:mx-32 2xl:mx-64">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white-900">
-          Register
-        </h2>
-        <Form />
-      </div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm"></div>
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white-900">
+            Sign in to your account
+          </h2>
+        </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <p className="mt-10 text-center text-sm text-gray-500">
