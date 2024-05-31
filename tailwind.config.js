@@ -11,7 +11,7 @@ module.exports = {
         center: true,
       },
       height: {
-        '100-[screen-(h-header+h-footer)]': 'calc(100vh - 136px)',
+        '100vh-[header+footer]': 'calc(100vh - 136px)',
       },
     },
   },
