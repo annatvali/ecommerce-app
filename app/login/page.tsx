@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { login } from './login';
 import { isAuth } from '@/lib/isAuth';
-import Navigation from '../components/Navigation';
+import Navigation from '../(components)/Navigation';
 
 const Login = () => {
   const [email, setEmail] = useState('');
