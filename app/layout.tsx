@@ -3,7 +3,7 @@ import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
-import { AuthProvider } from '@/lib/AuthContext';
+import { AuthProvider } from '@/app/lib/AuthContext';
 
 export const inter = Inter({
   weight: ['400', '500', '600', '700', '800', '900'],

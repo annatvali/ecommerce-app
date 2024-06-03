@@ -5,7 +5,7 @@ import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import Address from './Address';
 import { FormInputs } from './constants';
-import { createCustomer } from '@/lib/customer';
+import { createCustomer } from '@/app/lib/customer';
 import InputField from './InputField';
 import clsx from 'clsx';
 

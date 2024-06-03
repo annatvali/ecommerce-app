@@ -1,4 +1,4 @@
-import { client } from '@/lib/ClientBuilder';
+import { client } from '@/app/lib/ClientBuilder';
 import { FormInputs } from '@/app/registration/constants';
 
 const generateId = () => {

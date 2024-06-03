@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { login } from './login';
-import { isAuth } from '@/lib/isAuth';
+import { isAuth } from '@/app/lib/isAuth';
 import Navigation from '../components/Navigation';
 
 const Login = () => {
