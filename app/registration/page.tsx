@@ -1,12 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import Form from '@/app/registration/registration';
+import { poppins } from '../layout';
 
 const Registration = () => {
   return (
-    <main>
-      <div className="mx-2 sm:mx-4 md:mx-8 lg:mx-16 xl:mx-32 2xl:mx-64">
-        <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white-900">
+    <div className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl mx-auto">
+      <div>
+        <h1
+          className={`${poppins.className} mt-20 mb-10 text-center text-4xl font-bold leading-9 tracking-tight text-primary`}
+        >
           Create an account
         </h1>
         <Form />
@@ -37,7 +40,7 @@ const Registration = () => {
           </p>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

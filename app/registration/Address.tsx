@@ -1,8 +1,7 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { Controller, useFormContext } from 'react-hook-form';
 import Select from 'react-select';
-import { countries, postalCodeFormats } from './constants';
-import { Addresses } from './constants';
+import { countries, postalCodeFormats, Addresses } from './constants';
 import clsx from 'clsx';
 
 export default function Address() {
@@ -18,7 +17,7 @@ export default function Address() {
   const cityOptions = selectedCountry ? selectedCountry.cities : [];
 
   return (
-    <fieldset className="border-2 border-gray-300 rounded-md p-4 mt-2 mb-8">
+    <fieldset className="border-2 border-gray-300 rounded-md py-4 px-12 mt-2 mb-8">
       <legend className="text-xl font-semibold px-2">Address</legend>
       <div>
         {/* Country */}
@@ -35,6 +34,7 @@ export default function Address() {
             rules={{ required: 'This field is required' }}
             render={({ field }) => (
               <Select
+                instanceId="countryCode"
                 {...field}
                 options={countries}
                 getOptionLabel={(option) => option.label}
@@ -82,6 +82,7 @@ export default function Address() {
             rules={{ required: 'This field is required' }}
             render={({ field }) => (
               <Select
+                instanceId="city"
                 {...field}
                 options={cityOptions}
                 isSearchable
@@ -123,6 +124,7 @@ export default function Address() {
           </label>
           <input
             type="text"
+            placeholder="12345"
             {...register('postalCode', {
               required: 'This field is required',
               pattern: {
@@ -158,6 +160,7 @@ export default function Address() {
           </label>
           <input
             type="text"
+            placeholder="Main Street"
             {...register('streetName', {
               required: 'This field is required',
               pattern: {
@@ -189,6 +192,7 @@ export default function Address() {
           </label>
           <input
             type="text"
+            placeholder="12"
             {...register('streetNumber', {
               required: 'This field is required',
               pattern: {

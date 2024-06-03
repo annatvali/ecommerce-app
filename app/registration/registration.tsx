@@ -8,7 +8,6 @@ import { FormInputs } from './constants';
 import { createCustomer } from '@/lib/customer';
 import InputField from './InputField';
 import clsx from 'clsx';
-import { ErrorHandlerSource } from 'next/dist/server/app-render/create-error-handler';
 
 export default function Form() {
   const formMethods = useForm<FormInputs>({
@@ -42,11 +41,16 @@ export default function Form() {
 
   return (
     <FormProvider {...formMethods}>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full" noValidate>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full min-w-md"
+        noValidate
+      >
         <InputField
           label="Email"
           name="email"
           type="email"
+          placeholder="example@gmail.com"
           register={register}
           errors={errors}
           registerOptions={{
@@ -63,6 +67,7 @@ export default function Form() {
           label="Password"
           type="password"
           name="password"
+          placeholder="Pass123!"
           register={register}
           errors={errors}
           registerOptions={{
@@ -79,6 +84,7 @@ export default function Form() {
           label="First Name"
           name="firstName"
           type="text"
+          placeholder="John"
           register={register}
           errors={errors}
           registerOptions={{
@@ -94,6 +100,7 @@ export default function Form() {
           label="Last Name"
           name="lastName"
           type="text"
+          placeholder="Doe"
           register={register}
           errors={errors}
           registerOptions={{
@@ -139,7 +146,7 @@ export default function Form() {
           />
         </div>
         <Address />
-        <div className="relative mb-8">
+        <div className="relative mb-8 flex">
           <input type="checkbox" {...register('defaultAddress')} />
           <label
             htmlFor="defaultAddress"
@@ -148,7 +155,7 @@ export default function Form() {
             Set as default address
           </label>
         </div>
-        <div className="relative mb-8">
+        <div className="relative mb-8 flex">
           <input
             type="checkbox"
             {...register('differentShippingAddress')}
@@ -161,7 +168,7 @@ export default function Form() {
             Set a different Shipping Address
           </label>
         </div>
-        <div className="relative mb-8">
+        <div className="relative mb-8 flex">
           <input
             type="checkbox"
             {...register('sameBillingShipping')}
@@ -178,7 +185,7 @@ export default function Form() {
         <div className="flex justify-center">
           <input
             type="submit"
-            className="cursor-pointer text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+            className="cursor-pointer text-primary hover:text-white border border-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-primary dark:text-primary dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
           />
         </div>
       </form>

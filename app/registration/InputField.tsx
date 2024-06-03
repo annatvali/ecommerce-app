@@ -11,6 +11,7 @@ interface InputFieldProps {
   label: string;
   name: string;
   type: string;
+  placeholder: string;
   register: UseFormRegister<any>;
   errors: FieldErrors<any>;
   registerOptions: RegisterOptions;
@@ -20,6 +21,7 @@ export default function InputField({
   label,
   name,
   type,
+  placeholder,
   register,
   errors,
   ...rest
@@ -34,6 +36,7 @@ export default function InputField({
       </label>
       <input
         type={type}
+        placeholder={placeholder}
         {...register(name, rest.registerOptions)}
         className={clsx('px-3 py-2 border-2 rounded-md w-full', {
           'border-input-error': errors[name],
