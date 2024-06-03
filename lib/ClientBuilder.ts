@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
-import { ClientBuilder } from '@commercetools/sdk-client-v2';
+import { ClientBuilder, createClient } from '@commercetools/sdk-client-v2';
 import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
+import createAuthMiddlewareForClientCredentialsFlow from '@commercetools/sdk-client-v2/dist/declarations/src/sdk-middleware-auth/client-credentials-flow';
+import createHttpMiddleware from '@commercetools/sdk-client-v2/dist/declarations/src/sdk-middleware-http/http';
 
 export const projectKey = process.env.NEXT_PUBLIC_CTP_PROJECT_KEY;
 export const clientId = process.env.NEXT_PUBLIC_CTP_CLIENT_ID;
@@ -28,7 +30,7 @@ if (!apiUrl) {
   throw new Error('CTP_API_URL is not defined');
 }
 
-const authMiddlewareOptions = {
+export const authMiddlewareOptions = {
   host: authUrl,
   projectKey,
   credentials: {
@@ -39,12 +41,12 @@ const authMiddlewareOptions = {
   fetch,
 };
 
-const httpMiddlewareOptions = {
+export const httpMiddlewareOptions = {
   host: apiUrl,
   fetch,
 };
 
-const client = new ClientBuilder()
+export const client = new ClientBuilder()
   .withProjectKey(projectKey)
   .withClientCredentialsFlow(authMiddlewareOptions)
   .withHttpMiddleware(httpMiddlewareOptions)
