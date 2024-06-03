@@ -3,6 +3,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 import Select from 'react-select';
 import { countries, postalCodeFormats } from './constants';
 import { Addresses } from './constants';
+import clsx from 'clsx';
 
 export default function Address() {
   const {
@@ -49,12 +50,18 @@ export default function Address() {
                     field.onChange(null);
                   }
                 }}
+                styles={{
+                  control: (provided) => ({
+                    ...provided,
+                    borderColor: errors['countryCode'] ? 'red' : 'default',
+                  }),
+                }}
               />
             )}
           />
           <ErrorMessage
             errors={errors}
-            name="country"
+            name="countryCode"
             render={({ message }) => (
               <p className="text-sm text-red-500 absolute">{message}</p>
             )}
@@ -87,6 +94,12 @@ export default function Address() {
                   } else {
                     field.onChange(null);
                   }
+                }}
+                styles={{
+                  control: (provided) => ({
+                    ...provided,
+                    borderColor: errors['countryCode'] ? 'red' : 'default',
+                  }),
                 }}
               />
             )}
@@ -121,7 +134,10 @@ export default function Address() {
                 message: 'Invalid postal code format for selected country',
               },
             })}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full"
+            className={clsx('px-3 py-2 border-2 rounded-md w-full', {
+              'border-input-error': errors['postalCode'],
+              'border-input-default': !errors['postalCode'],
+            })}
           />
           <ErrorMessage
             errors={errors}
@@ -149,7 +165,10 @@ export default function Address() {
                 message: 'Street Name must contain only letters',
               },
             })}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full"
+            className={clsx('px-3 py-2 border-2 rounded-md w-full', {
+              'border-input-error': errors['postalCode'],
+              'border-input-default': !errors['postalCode'],
+            })}
           />
           <ErrorMessage
             errors={errors}
@@ -177,7 +196,10 @@ export default function Address() {
                 message: 'Street Number must contain only numbers',
               },
             })}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full"
+            className={clsx('px-3 py-2 border-2 rounded-md w-full', {
+              'border-input-error': errors['postalCode'],
+              'border-input-default': !errors['postalCode'],
+            })}
           />
           <ErrorMessage
             errors={errors}

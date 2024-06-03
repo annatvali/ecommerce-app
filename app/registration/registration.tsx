@@ -7,6 +7,8 @@ import Address from './Address';
 import { FormInputs } from './constants';
 import { createCustomer } from '@/lib/customer';
 import InputField from './InputField';
+import clsx from 'clsx';
+import { ErrorHandlerSource } from 'next/dist/server/app-render/create-error-handler';
 
 export default function Form() {
   const formMethods = useForm<FormInputs>({
@@ -123,7 +125,10 @@ export default function Form() {
                 );
               },
             })}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full"
+            className={clsx('px-3 py-2 border-2 rounded-md w-full', {
+              'border-input-error': errors['dateOfBirth'],
+              'border-input-default': !errors['dateOfBirth'],
+            })}
           />
           <ErrorMessage
             errors={errors}
