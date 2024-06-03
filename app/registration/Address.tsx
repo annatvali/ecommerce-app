@@ -12,8 +12,8 @@ export default function Address() {
     watch,
     setValue,
   } = useFormContext<Addresses>();
-  const country = watch('country');
-  const selectedCountry = countries.find((c) => c.countryCode === country);
+  const countryCode = watch('countryCode');
+  const selectedCountry = countries.find((c) => c.countryCode === countryCode);
   const cityOptions = selectedCountry ? selectedCountry.cities : [];
 
   return (
@@ -29,14 +29,15 @@ export default function Address() {
             Country
           </label>
           <Controller
-            name="country"
+            name="countryCode"
             control={control}
             rules={{ required: 'This field is required' }}
             render={({ field }) => (
               <Select
                 {...field}
                 options={countries}
-                isSearchable
+                getOptionLabel={(option) => option.label}
+                getOptionValue={(option) => option.countryCode}
                 value={countries.find(
                   (option) => option.countryCode === field.value,
                 )}
@@ -112,8 +113,10 @@ export default function Address() {
             {...register('postalCode', {
               required: 'This field is required',
               pattern: {
-                value: country
-                  ? postalCodeFormats[country as keyof typeof postalCodeFormats]
+                value: countryCode
+                  ? postalCodeFormats[
+                      countryCode as keyof typeof postalCodeFormats
+                    ]
                   : /.*/,
                 message: 'Invalid postal code format for selected country',
               },

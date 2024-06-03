@@ -1,10 +1,11 @@
 export interface Addresses {
   id?: string;
-  country: string;
-  city: string;
-  postalCode: string;
-  streetName: string;
-  streetNumber: string;
+  country?: string;
+  countryCode?: string;
+  city?: string;
+  postalCode?: string;
+  streetName?: string;
+  streetNumber?: string;
   firstName?: string;
   lastName?: string;
 }

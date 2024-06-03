@@ -10,6 +10,11 @@ module.exports = {
       container: {
         center: true,
       },
+      colors: {
+        'input-default': '#d1d5db',
+        'input-error': '#f87171',
+        'text-input-error': '#f87171',
+      },
     },
   },
   plugins: [],

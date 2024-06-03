@@ -25,7 +25,11 @@ export const createCustomer = async (data: FormInputs) => {
     address: {
       id: generateId(),
       //TODO: write address data instead of empty strings
-      ...data.addresses[0],
+      country: data.addresses[0].countryCode,
+      city: data.addresses[0].city,
+      postalCode: data.addresses[0].postalCode,
+      streetName: data.addresses[0].streetName,
+      streetNumber: data.addresses[0].streetNumber,
       firstName: data.firstName,
       lastName: data.lastName,
     },

@@ -6,6 +6,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import Address from './Address';
 import { FormInputs } from './constants';
 import { createCustomer } from '@/lib/customer';
+import InputField from './InputField';
 
 export default function Form() {
   const formMethods = useForm<FormInputs>({
@@ -39,116 +40,68 @@ export default function Form() {
 
   return (
     <FormProvider {...formMethods}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4 w-full"
-        noValidate
-      >
-        <div className="relative mb-8">
-          <label
-            htmlFor="email"
-            className="text-sm font-medium text-gray-700 w-full"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            {...register('email', {
-              required: 'This field is required',
-              pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-                message:
-                  'Email must be in the following format - example@email.com',
-              },
-            })}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full"
-          />
-          <ErrorMessage
-            errors={errors}
-            name="email"
-            render={({ message }) => (
-              <p className="text-sm text-red-500 absolute">{message}</p>
-            )}
-          />
-        </div>
-        <div className="relative mb-8">
-          <label
-            htmlFor="password"
-            className="text-sm font-medium text-gray-700 w-full"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            {...register('password', {
-              required: 'This field is required',
-              pattern: {
-                value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/g,
-                message:
-                  'Password must contain at least 8 characters long, at least 1 uppercase letter, 1 lowercase letter, and 1 number',
-              },
-            })}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full"
-          />
-          <ErrorMessage
-            errors={errors}
-            name="password"
-            render={({ message }) => (
-              <p className="text-sm text-red-500 absolute">{message}</p>
-            )}
-          />
-        </div>
-        <div className="relative mb-8">
-          <label
-            htmlFor="firstName"
-            className="text-sm font-medium text-gray-700 w-full"
-          >
-            First Name
-          </label>
-          <input
-            type="text"
-            {...register('firstName', {
-              required: 'This field is required',
-              pattern: {
-                value: /^[a-zA-Z]+$/,
-                message: 'First Name must contain only letters',
-              },
-            })}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full"
-          />
-          <ErrorMessage
-            errors={errors}
-            name="firstName"
-            render={({ message }) => (
-              <p className="text-sm text-red-500 absolute">{message}</p>
-            )}
-          />
-        </div>
-        <div className="relative mb-8">
-          <label
-            htmlFor="lastName"
-            className="text-sm font-medium text-gray-700 w-full"
-          >
-            Last Name
-          </label>
-          <input
-            {...register('lastName', {
-              required: 'This field is required',
-              pattern: {
-                value: /^[a-zA-Z]+$/,
-                message: 'Last Name must contain only letters',
-              },
-            })}
-            className="px-3 py-2 border border-gray-300 rounded-md w-full"
-          />
-          <ErrorMessage
-            errors={errors}
-            name="lastName"
-            render={({ message }) => (
-              <p className="text-sm text-red-500 absolute">{message}</p>
-            )}
-          />
-        </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full" noValidate>
+        <InputField
+          label="Email"
+          name="email"
+          type="email"
+          register={register}
+          errors={errors}
+          registerOptions={{
+            required: 'This field is required',
+            pattern: {
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+              message:
+                'Email must be in the following format - example@email.com',
+            },
+          }}
+        />
+
+        <InputField
+          label="Password"
+          type="password"
+          name="password"
+          register={register}
+          errors={errors}
+          registerOptions={{
+            required: 'This field is required',
+            pattern: {
+              value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/g,
+              message:
+                'Password must contain at least 8 characters long, at least 1 uppercase letter, 1 lowercase letter, and 1 number',
+            },
+          }}
+        />
+
+        <InputField
+          label="First Name"
+          name="firstName"
+          type="text"
+          register={register}
+          errors={errors}
+          registerOptions={{
+            required: 'This field is required',
+            pattern: {
+              value: /^[a-zA-Z]+$/,
+              message: 'First Name must contain only letters',
+            },
+          }}
+        />
+
+        <InputField
+          label="Last Name"
+          name="lastName"
+          type="text"
+          register={register}
+          errors={errors}
+          registerOptions={{
+            required: 'This field is required',
+            pattern: {
+              value: /^[a-zA-Z]+$/,
+              message: 'Last Name must contain only letters',
+            },
+          }}
+        />
         <div className="relative mb-8">
           <label
             htmlFor="dateOfBirth"
