@@ -5,11 +5,11 @@ import Header from './ui/Header';
 import Footer from './ui/Footer';
 import { AuthProvider } from '@/app/lib/AuthContext';
 
-export const inter = Inter({
+const inter = Inter({
   weight: ['400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
 });
-export const poppins = Poppins({
+const poppins = Poppins({
   weight: ['400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
 });
