@@ -1,15 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Form from '@/app/registration/registration';
-import { poppins } from '../layout';
 
 const Registration = () => {
   return (
     <div className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl mx-auto">
       <div>
-        <h1
-          className={`${poppins.className} mt-20 mb-10 text-center text-4xl font-bold leading-9 tracking-tight text-primary`}
-        >
+        <h1 className="mt-20 mb-10 text-center text-4xl font-bold leading-9 tracking-tight text-primary">
           Create an account
         </h1>
         <Form />
