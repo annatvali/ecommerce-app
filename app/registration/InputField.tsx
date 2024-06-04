@@ -38,6 +38,7 @@ export default function InputField({
         type={type}
         placeholder={placeholder}
         {...register(name, rest.registerOptions)}
+        id={name}
         className={clsx('px-3 py-2 border-2 rounded-md w-full', {
           'border-input-error': errors[name],
           'border-input-default': !errors[name],

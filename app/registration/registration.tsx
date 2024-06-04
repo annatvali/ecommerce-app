@@ -9,7 +9,7 @@ import { createCustomer } from '@/app/lib/customer';
 import InputField from './InputField';
 import clsx from 'clsx';
 
-export default function Form() {
+const Form = () => {
   const formMethods = useForm<FormInputs>({
     defaultValues: {
       addresses: [
@@ -191,4 +191,6 @@ export default function Form() {
       </form>
     </FormProvider>
   );
-}
+};
+
+export default Form;
