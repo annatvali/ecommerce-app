@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import InputField from '@/app/registration/InputField';
-import Form from '@/app/registration/registration';
+import Address from '@/app/registration/Address';
+// import Form from '@/app/registration/registration';
 
-describe('InputField', () => {
+describe('Registration Form', () => {
   it('renders correctly', async () => {
     const TestComponent = () => {
       const {
@@ -223,5 +224,17 @@ describe('InputField', () => {
     expect(
       await screen.findByText('This field is required'),
     ).toBeInTheDocument();
+  });
+  it('should render without crashing', () => {
+    const TestComponent = () => {
+      const methods = useForm();
+      return (
+        <FormProvider {...methods}>
+          <Address />
+        </FormProvider>
+      );
+    };
+
+    render(<TestComponent />);
   });
 });
