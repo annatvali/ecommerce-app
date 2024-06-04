@@ -70,6 +70,7 @@ const Navigation = (): JSX.Element => {
       <div>
         {isAuthenticated ? (
           <Button
+            href={'/'}
             text="Logout"
             colorClass="from-red-600 to-red-500 hover:bg-gradient-to-bl"
             onClick={handleLogoutClick}
@@ -77,11 +78,13 @@ const Navigation = (): JSX.Element => {
         ) : (
           <>
             <Button
+              href={'/login'}
               text="Login"
               colorClass="from-purple-600 to-blue-500 hover:bg-gradient-to-bl"
               onClick={handleLoginClick}
             />
             <Button
+              href={'/register'}
               text="Register"
               colorClass="bg-white hover:bg-gray-100"
               textColor="text-purple-600"

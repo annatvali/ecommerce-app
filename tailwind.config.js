@@ -15,11 +15,14 @@ module.exports = {
       },
       colors: {
         primary: '#4338CA',
-        hilighted: '#667eea',
+        hilight: '#667eea',
         'body-primary': '#f3f4f6',
         'input-default': '#d1d5db',
         'input-error': '#f87171',
         'text-input-error': '#f87171',
+      },
+      height: {
+        '100vh-[header+footer]': 'calc(100vh - 136px)',
       },
     },
   },
