@@ -8,6 +8,7 @@ describe('login', () => {
   beforeEach(() => {
     (fetch as jest.Mock).mockClear();
     localStorage.clear();
+    window.alert = jest.fn();
   });
 
   it('calls the correct url with the correct method and headers', async () => {
