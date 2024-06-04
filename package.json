@@ -17,9 +17,12 @@
   "dependencies": {
     "@commercetools/platform-sdk": "^7.8.0",
     "@commercetools/sdk-client-v2": "^2.5.0",
+    "@heroicons/react": "^2.0.18",
+    "@hookform/error-message": "^2.0.1",
     "next": "14.2.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.5",

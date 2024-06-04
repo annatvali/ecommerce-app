@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { login } from './login';
-import { isAuth } from '@/lib/isAuth';
-import Navigation from '../components/Navigation';
+import { isAuth } from '@/app/lib/isAuth';
+import Navigation from '../ui/Navigation';
 
 const Login = () => {
   const [email, setEmail] = useState('');

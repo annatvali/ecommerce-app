@@ -10,6 +10,9 @@ module.exports = {
       container: {
         center: true,
       },
+      height: {
+        '100vh-[header+footer]': 'calc(100vh - 136px)',
+      },
     },
   },
   plugins: [],
