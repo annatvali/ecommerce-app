@@ -1,14 +1,18 @@
+import React from 'react';
 import Link from 'next/link';
+import Form from '@/app/registration/registration';
 
 const Registration = () => {
   return (
-    <main>
+    <div className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl mx-auto">
+      <div>
+        <h1 className="mt-20 mb-10 text-center text-4xl font-bold leading-9 tracking-tight text-primary">
+          Create an account
+        </h1>
+        <Form />
+      </div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white-900">
-            Sign in to your account
-          </h2>
-        </div>
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm"></div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <p className="mt-10 text-center text-sm text-gray-500">
@@ -33,7 +37,7 @@ const Registration = () => {
           </p>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

@@ -5,7 +5,10 @@ import Header from './ui/Header';
 import Footer from './ui/Footer';
 import { AuthProvider } from '@/app/lib/AuthContext';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
