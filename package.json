@@ -9,6 +9,7 @@
     "start": "next start",
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "prepare": "husky install",
     "format": "prettier --write .",
     "lint": "next lint",
