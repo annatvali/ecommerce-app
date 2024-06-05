@@ -1,7 +1,4 @@
-const clientId = process.env.NEXT_PUBLIC_CTP_CLIENT_ID;
-const clientSecret = process.env.NEXT_PUBLIC_CTP_CLIENT_SECRET;
-const authUrl = process.env.NEXT_PUBLIC_CTP_AUTH_URL;
-const url = `${authUrl}/oauth/introspect`;
+import { authEndpoint, clientId, clientSecret } from '../utils/constants';
 
 export async function isAuth() {
   const token = localStorage.getItem('access_token');
@@ -12,7 +9,7 @@ export async function isAuth() {
   }
 
   try {
-    const response = await fetch(url, {
+    const response = await fetch(authEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',

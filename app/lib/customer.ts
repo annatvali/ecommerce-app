@@ -1,6 +1,7 @@
 import { client } from '@/app/lib/ClientBuilder';
 import { FormInputs } from '@/app/registration/constants';
 import { v4 } from 'uuid';
+import { customersEndpoint } from '../utils/constants';
 
 const generateId = () => {
   return v4();
@@ -43,9 +44,8 @@ export const createCustomer = async (data: FormInputs) => {
 
   try {
     const bodyRequest = JSON.stringify(customerDraft);
-    const projectKey = process.env.NEXT_PUBLIC_CTP_PROJECT_KEY;
     const response = await client.execute({
-      uri: `/${projectKey}/customers`,
+      uri: customersEndpoint,
       method: 'POST',
       body: bodyRequest,
       headers: {
