@@ -1,8 +1,9 @@
 import { client } from '@/app/lib/ClientBuilder';
 import { FormInputs } from '@/app/registration/constants';
+import { v4 } from 'uuid';
 
 const generateId = () => {
-  return Math.random().toString(36).substring(2, 11);
+  return v4();
 };
 
 export const createCustomer = async (data: FormInputs) => {
