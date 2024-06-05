@@ -1,10 +1,13 @@
-export async function login(email: string, password: string) {
-  const projectKey = process.env.NEXT_PUBLIC_CTP_PROJECT_KEY;
-  const clientId = process.env.NEXT_PUBLIC_CTP_CLIENT_ID;
-  const clientSecret = process.env.NEXT_PUBLIC_CTP_CLIENT_SECRET;
-  const authUrl = process.env.NEXT_PUBLIC_CTP_AUTH_URL;
+import {
+  authUrl,
+  clientId,
+  clientSecret,
+  projectKey,
+} from '../utils/constants';
 
+export async function login(email: string, password: string) {
   const url = `${authUrl}/oauth/${projectKey}/customers/token`;
+
   const response = await fetch(url, {
     method: 'POST',
     headers: {
