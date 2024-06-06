@@ -4,7 +4,7 @@ import Select from 'react-select';
 import { countries, postalCodeFormats, Addresses } from './constants';
 import clsx from 'clsx';
 
-export default function Address() {
+const Address = () => {
   const {
     register,
     formState: { errors },
@@ -216,4 +216,6 @@ export default function Address() {
       </div>
     </fieldset>
   );
-}
+};
+
+export default Address;
