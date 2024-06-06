@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Button from '../ui/Button';
 import { roboto } from '@/app/ui/fonts';
 
-const Home = (): JSX.Element => {
+const Home = () => {
   return (
     <main className="flex flex-col">
       <section className="text-white py-20 px-8">
