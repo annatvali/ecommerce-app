@@ -2,27 +2,34 @@
 
 ## Project Overview
 
-The ecommerce app is a modern web application built using cutting-edge technologies such as TypeScript, Vite, and Jest. The project aims to provide a seamless shopping experience for users, with a focus on performance, scalability, and maintainability.
+This project is a simple e-commerce application built with NextJS and TailwindCSS. The project aims to provide a seamless shopping experience for users, with a focus on performance, scalability, and maintainability. The application allows users to browse products, add items to their cart, and complete the checkout process.
+
+### The application includes the following pages:
+
+- **Home**: The main page of the application.
+- **Registration and Login**: Allows new users to register and existing users to log in.
+- **Catalog Product Page**: Displays a catalog of all available products.
+- **Detailed Product Page**: Provides detailed information about a specific product.
+- **User Profile Page**: Allows users to view and update their profile information.
+- **Basket Page**: Allows users to view their selected items and proceed to checkout.
+- **About Us Page**: Provides information about the company and the team behind the application.
 
 ## Technology Stack
 
-<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="24" alt="typescript" /> <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" height="24" alt="vite" /> <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" height="24" alt="jest" /> <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" height="24" alt="eslint" /> <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" height="24" alt="prettier" /> <img src="https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=Sass&logoColor=white" height="24" alt="Sass" />
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" height="24" alt="nextjs" /> <img src="https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white&style=for-the-badge" height="24" alt="reactjs" /> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="24" alt="typescript" /> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7vPlcs32Rlq4qstSmL7dg-tiWKAcnkK2qByMGb_IZZA&s" height="24" alt="commercetools" /> <img src="https://img.shields.io/badge/commercetools-typesscript_SDK-%236359ff" height="24" alt="commercetools-typescript-sdk" /> <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" height="24" alt="jest" /> <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" height="24" alt="eslint" /> <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" height="24" alt="prettier" /> <img src="https://img.shields.io/badge/Husky%20%F0%9F%90%95-blue" height="24" alt="husky" /> <img src="https://img.shields.io/badge/lint_staged-yellow" height="24" alt="lint-staged" /> <img src="https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss" height="24" alt="tailwindcss"/> <img src="https://img.shields.io/badge/autoprefixer-purple" height="24" alt="autoprefixer" />
 
+- **NextJS**: A modern web development framework that enables server-side rendering and static site generation.
+- **ReactJS**: A popular JavaScript library for building user interfaces.
 - **TypeScript**: Used for writing type-safe and maintainable code.
-- **Vite**: A modern development server and build tool that provides fast and efficient development experiences.
+- **commercetools**: A powerful e-commerce platform that provides a wide range of features for building online stores. It offers a RESTful API for managing products, orders, customer data, shopping carts, and more.
+- **commercetools-typescript SDK**: This SDK provides TypeScript bindings for the commercetools API, making it easier to interact with the API in a type-safe manner. It includes methods for performing common operations, such as creating and retrieving products, managing carts, and processing orders.
 - **Jest**: A popular testing framework for JavaScript applications.
 - **ESLint**: A linter that helps maintain code quality and consistency.
 - **Prettier**: A code formatter that ensures consistent code style.
-- **Sass**: A CSS preprocessor that provides features like variables, nesting, and mixins.
-
-## Husky Hooks
-
-<img src="https://miro.medium.com/v2/resize:fit:800/1*S3u42EBG_BMesapjXHy06w.jpeg" height="48" alt="husky" />
-
-The project uses **Husky** hooks to enforce code _quality_ and _consistency_. The following hooks are configured:
-
-- `commit-msg`: Ensures commit messages follow the conventional commit format
-- `pre-commit`: Runs lint-staged and npm run test to ensure code quality and test coverage before committing changes
+- **Husky**: A tool that enables running scripts in response to Git events.
+- **Lint-staged**: Used in conjunction with Husky to run linters on staged files.
+- **TailwindCss**: A utility-first CSS framework for quickly building custom designs.
+- **Autoprefixer**: A PostCSS plugin that adds vendor prefixes to CSS rules.
 
 ## Available Scripts
 
@@ -30,19 +37,16 @@ The project uses **Husky** hooks to enforce code _quality_ and _consistency_. Th
 Runs Jest tests with coverage reporting.
 
 `test:watch`
-Runs Jest tests in watch mode.
+Runs Jest tests with coverage reporting in watch mode.
 
 `dev`
-Starts the Vite development server.
+Starts the Next.js development server.
 
 `build`
-Builds the application using Vite.
+Builds the application using Next.js.
 
-`serve`
-Starts a static server using the serve package to serve the built application files from the dist directory.
-
-`preview`
-Starts the Vite preview server.
+`start`
+Starts the Next.js application.
 
 `lint`
 Runs ESLint with the configured rules and plugins.
@@ -60,6 +64,5 @@ Installs Husky hooks.
 
 1. Clone the repository using `git clone https://github.com/annatvali/ecommerce-app.git`
 2. Install dependencies using `npm install`
-3. Run `npm run prepare` to install Husky hooks
-4. Run `npm run dev` to start the Vite development server
-5. Open `http://localhost:3000` in your browser to access the application
+3. Run `npm run dev` to start the Vite development server
+4. Open `http://localhost:3000` in your browser to access the application
