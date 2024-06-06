@@ -1,4 +1,3 @@
-import { Response } from 'node-fetch';
 import fetchMock from 'jest-fetch-mock';
 import { login } from '../app/login/login';
 
