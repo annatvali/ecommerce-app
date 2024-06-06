@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  exportTrailingSlash: true,
-};
+const nextConfig = {};
 
 export default nextConfig;
