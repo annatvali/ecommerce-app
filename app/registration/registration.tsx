@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FormProvider, useForm, useFormContext } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import Address from './Address';
 import { FormInputs } from './constants';
@@ -119,6 +119,7 @@ const Form = () => {
             Date of Birth
           </label>
           <input
+            id="dateOfBirth"
             type="date"
             {...register('dateOfBirth', {
               required: 'This field is required',
@@ -147,7 +148,11 @@ const Form = () => {
         </div>
         <Address />
         <div className="relative mb-8 flex">
-          <input type="checkbox" {...register('defaultAddress')} />
+          <input
+            id="defaultAddress"
+            type="checkbox"
+            {...register('defaultAddress')}
+          />
           <label
             htmlFor="defaultAddress"
             className={`text-sm font-medium w-full ml-2 ${watch('sameBillingShipping') || watch('differentShippingAddress') ? 'text-gray-400' : 'text-gray-700'}`}
@@ -157,6 +162,7 @@ const Form = () => {
         </div>
         <div className="relative mb-8 flex">
           <input
+            id="differentShippingAddress"
             type="checkbox"
             {...register('differentShippingAddress')}
             disabled={watch('sameBillingShipping')}
@@ -170,6 +176,7 @@ const Form = () => {
         </div>
         <div className="relative mb-8 flex">
           <input
+            id="sameBillingShipping"
             type="checkbox"
             {...register('sameBillingShipping')}
             disabled={watch('differentShippingAddress')}
@@ -184,6 +191,7 @@ const Form = () => {
         {watch('differentShippingAddress') && <Address />}
         <div className="flex justify-center">
           <input
+            id="submitRegistrationForm"
             type="submit"
             className="cursor-pointer text-primary hover:text-white border border-primary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-primary dark:text-primary dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
           />
