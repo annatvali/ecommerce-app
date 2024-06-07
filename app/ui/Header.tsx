@@ -12,7 +12,10 @@ const Header = () => {
   return (
     <header className="w-full flex justify-between items-center bg-gray-800 text-white p-4 relative z-20">
       <div>
-        <a className="text-xl font-bold hover:text-blue-300" href="/">
+        <a
+          className="text-xl font-bold hover:text-blue-100 animate-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent text-5xl font-black"
+          href="/"
+        >
           CoMM
         </a>
       </div>
