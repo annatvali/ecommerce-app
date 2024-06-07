@@ -7,7 +7,13 @@ import { isAuth } from '@/app/lib/isAuth';
 import { useAuth } from '@/app/lib/AuthContext';
 import { useEffect } from 'react';
 
-const Navigation = (): JSX.Element => {
+const Navigation = ({
+  isOpen,
+  onLinkClick,
+}: {
+  isOpen: boolean;
+  onLinkClick: () => void;
+}): JSX.Element => {
   const router = useRouter();
   const { isAuthenticated, login, logout } = useAuth();
 
@@ -24,6 +30,7 @@ const Navigation = (): JSX.Element => {
       console.error('Error during auth check:', error);
       router.push('/login');
     }
+    onLinkClick();
   };
 
   const handleRegisterClick = async () => {
@@ -39,35 +46,53 @@ const Navigation = (): JSX.Element => {
       console.error('Error during auth check:', error);
       router.push('/registration');
     }
+    onLinkClick();
   };
 
   const handleLogoutClick = () => {
     logout();
     router.push('/');
+    onLinkClick();
   };
 
   useEffect(() => {}, [isAuthenticated]);
 
   return (
-    <nav className="flex items-center gap-24">
-      <ul className="flex space-x-4">
+    <nav
+      className={`${
+        isOpen ? 'flex' : 'hidden'
+      } flex-col items-center w-full md:w-auto md:flex md:flex-row md:items-center md:gap-4 bg-gray-800 md:bg-transparent absolute md:relative top-0 left-0 md:top-auto md:left-auto p-4 md:p-0 mt-14 md:mt-0 z-10`}
+    >
+      <ul className="flex flex-col md:flex-row md:space-x-4 items-center space-y-4 md:space-y-0">
         <li>
-          <Link href="/" className="hover:underline">
+          <Link
+            href="/"
+            className="hover:underline active:bg-blue-600"
+            onClick={onLinkClick}
+          >
             Home
           </Link>
         </li>
         <li>
-          <Link href="/catalog" className="hover:underline">
+          <Link
+            href="/catalog"
+            className="hover:underline active:bg-blue-600"
+            onClick={onLinkClick}
+          >
             Catalog
           </Link>
         </li>
         <li>
-          <Link href="/about" className="hover:underline">
+          <Link
+            href="/about"
+            className="hover:underline active:bg-blue-600"
+            onClick={onLinkClick}
+          >
             About
           </Link>
         </li>
       </ul>
-      <div>
+      <div className="flex flex-col md:flex-row md:space-x-4 items-center space-y-4 md:space-y-0 mt-4 md:mt-0">
         {isAuthenticated ? (
           <Button
             href={'/'}
