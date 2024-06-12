@@ -1,73 +1,34 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { getCustomerData } from '../lib/customer';
-import { FormInputs } from '../registration/constants';
-import { toast, ToastContainer } from 'react-toastify';
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {
-  PencilSquareIcon,
-  ArrowPathIcon,
-  ArrowUpTrayIcon,
-  PhotoIcon,
-} from '@heroicons/react/24/outline';
+import { PhotoIcon, ArrowUpTrayIcon } from '@heroicons/react/24/outline';
+import Skeleton from './Skeleton';
+import ProfileField from './ProfileField';
+import { ProfileFields } from './constants';
+import { useProfile } from './useProfile';
 
 const Profile = () => {
-  const [customerData, setCustomerData] = useState<FormInputs | null>(null);
-  const [isEditing, setIsEditing] = useState({
-    firstName: false,
-    lastName: false,
-    email: false,
-    password: false,
-    dateOfBirth: false,
-  });
-  const [language, setLanguage] = useState('EN');
+  const {
+    customerData,
+    isEditing,
+    language,
+    handleInputChange,
+    handleEditClick,
+    handleUpdateClick,
+    handleBlur,
+    handleAvatarUpload,
+    handleLanguageChange,
+  } = useProfile();
 
-  useEffect(() => {
-    const fetchCustomerData = async () => {
-      try {
-        const data = await getCustomerData();
-        setCustomerData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchCustomerData();
-  }, []);
-
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    field: keyof FormInputs,
-  ) => {
-    if (customerData) {
-      setCustomerData({ ...customerData, [field]: event.target.value });
-    }
-  };
-
-  const handleEditClick = (field: keyof typeof isEditing) => {
-    setIsEditing({ ...isEditing, [field]: true });
-  };
-
-  const handleUpdateClick = async (field: keyof typeof isEditing) => {
-    setIsEditing({ ...isEditing, [field]: false });
-    toast.success('Value updated successfully!');
-  };
-
-  const handleBlur = (field: keyof typeof isEditing) => {
-    setIsEditing({ ...isEditing, [field]: false });
-  };
-
-  const handleAvatarUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Handle the avatar upload here
-    console.log(event.target.files);
-  };
-
-  const handleLanguageChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    setLanguage(event.target.value);
-  };
+  const profileFields = [
+    { label: 'First Name', field: ProfileFields.FirstName },
+    { label: 'Last Name', field: ProfileFields.LastName },
+    { label: 'Email', field: ProfileFields.Email },
+    { label: 'Password', field: ProfileFields.Password },
+    { label: 'Date of Birth', field: ProfileFields.DateOfBirth },
+  ];
 
   return (
     <div className="flex flex-col items-center my-32">
@@ -111,183 +72,23 @@ const Profile = () => {
       </div>
       {customerData ? (
         <div>
-          <div className="flex justify-between items-center gap-4 p-2">
-            {isEditing.firstName ? (
-              <div className="max-w-120 flex gap-8">
-                <p className="text-xl font-bold text-blue-800">Frist Name: </p>
-                <input
-                  type="text"
-                  value={customerData.firstName}
-                  onChange={(event) => handleInputChange(event, 'firstName')}
-                  onBlur={() => handleBlur('firstName')}
-                  className="border-2 rounded-md px-2"
-                />
-              </div>
-            ) : (
-              <div className="w-120 flex items-center gap-2">
-                <p className="text-xl font-bold text-blue-800">First Name: </p>
-                <p>{customerData.firstName}</p>
-              </div>
-            )}
-            <div className="flex items-center gap-2">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded"
-                onClick={() => handleEditClick('firstName')}
-              >
-                <PencilSquareIcon className="h-5 w-5" />
-              </button>
-              <button
-                className="flex items-center gap-2 text-sm font-normal bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded"
-                onClick={() => handleUpdateClick('firstName')}
-              >
-                <span>update</span>
-                <ArrowPathIcon className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-4 p-2">
-            {isEditing.lastName ? (
-              <div className="max-w-120 flex gap-8">
-                <p className="text-xl font-bold text-blue-800">Last Name: </p>
-                <input
-                  type="text"
-                  value={customerData.lastName}
-                  onChange={(event) => handleInputChange(event, 'lastName')}
-                  onBlur={() => handleBlur('lastName')}
-                  className="border-2 rounded-md px-2"
-                />
-              </div>
-            ) : (
-              <div className="w-120 flex items-center gap-2">
-                <p className="text-xl font-bold text-blue-800">Last Name: </p>
-                <p>{customerData.lastName}</p>
-              </div>
-            )}
-            <div className="flex items-center gap-2">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded"
-                onClick={() => handleEditClick('firstName')}
-              >
-                <PencilSquareIcon className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => handleUpdateClick('lastName')}
-                className="flex items-center gap-2 text-sm font-normal bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded"
-              >
-                <span>update</span>
-                <ArrowPathIcon className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-4 p-2">
-            {isEditing.email ? (
-              <div className="max-w-120 flex gap-8">
-                <p className="text-xl font-bold text-blue-800">Email: </p>
-                <input
-                  type="text"
-                  value={customerData.email}
-                  onChange={(event) => handleInputChange(event, 'email')}
-                  onBlur={() => handleBlur('email')}
-                  className="border-2 rounded-md px-2"
-                />
-              </div>
-            ) : (
-              <div className="w-120 flex items-center gap-2">
-                <p className="text-xl font-bold text-blue-800">Email: </p>
-                <p>{customerData.email}</p>
-              </div>
-            )}
-            <div className="flex items-center gap-2">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded"
-                onClick={() => handleEditClick('email')}
-              >
-                <PencilSquareIcon className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => handleUpdateClick('email')}
-                className="flex items-center gap-2 text-sm font-normal bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded"
-              >
-                <span>update</span>
-                <ArrowPathIcon className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-4 w-full p-2">
-            <div className="w-64">
-              {isEditing.password ? (
-                <div>
-                  <span>Password: </span>
-                  <input
-                    type="password"
-                    value={customerData.password}
-                    onChange={(event) => handleInputChange(event, 'password')}
-                    onBlur={() => handleBlur('password')}
-                    className="border-2 rounded-md px-2"
-                  />
-                </div>
-              ) : (
-                <div className="w-120 flex items-center gap-2">
-                  <p className="text-xl font-bold text-blue-800">Password: </p>
-                  <p>******</p>
-                </div>
-              )}
-            </div>
-            <div className="flex space-x-2">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded"
-                onClick={() => handleEditClick('password')}
-              >
-                <PencilSquareIcon className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => handleUpdateClick('email')}
-                className="flex items-center gap-2 text-sm font-normal bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded"
-              >
-                <span>update</span>
-                <ArrowPathIcon className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-          <div className="flex justify-between items-center gap-4 p-2">
-            {isEditing.dateOfBirth ? (
-              <div className="max-w-120 flex gap-8">
-                <p className="text-xl font-bold text-blue-800">
-                  Date of Birth:{' '}
-                </p>
-                <input
-                  type="date"
-                  value={customerData.dateOfBirth}
-                  onChange={(event) => handleInputChange(event, 'dateOfBirth')}
-                  onBlur={() => handleBlur('dateOfBirth')}
-                  className="border-2 rounded-md px-2"
-                />
-              </div>
-            ) : (
-              <div className="w-120 flex items-center gap-2">
-                <p className="text-xl font-bold text-blue-800">dateOfBirth: </p>
-                <p>{customerData.dateOfBirth}</p>
-              </div>
-            )}
-            <div className="flex items-center gap-2">
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded"
-                onClick={() => handleEditClick('dateOfBirth')}
-              >
-                <PencilSquareIcon className="h-5 w-5" />
-              </button>
-              <button
-                onClick={() => handleUpdateClick('email')}
-                className="flex items-center gap-2 text-sm font-normal bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded"
-              >
-                <span>update</span>
-                <ArrowPathIcon className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
+          {profileFields.map(({ label, field }) => (
+            <ProfileField
+              key={field}
+              label={label}
+              value={customerData[field]}
+              isEditing={isEditing[field]}
+              field={field}
+              handleInputChange={handleInputChange}
+              handleBlur={handleBlur}
+              handleEditClick={handleEditClick}
+              handleUpdateClick={handleUpdateClick}
+              isLoading={false}
+            />
+          ))}
         </div>
       ) : (
-        <p>Loading...</p>
+        <Skeleton />
       )}
     </div>
   );
