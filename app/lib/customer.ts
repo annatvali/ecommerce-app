@@ -1,4 +1,5 @@
 import { client } from '@/app/lib/ClientBuilder';
+import fetch from 'node-fetch';
 // import { isAuth } from '@/app/lib/isAuth';
 import { FormInputs } from '@/app/registration/constants';
 import { v4 } from 'uuid';
@@ -61,7 +62,7 @@ export const createCustomer = async (data: FormInputs) => {
   }
 };
 
-export async function getCustomerData() {
+export const getCustomerData = async () => {
   const token = localStorage.getItem('access_token');
   const url = `${apiUrl}/${projectKey}/me`;
 
@@ -79,4 +80,4 @@ export async function getCustomerData() {
 
   const data = await response.json();
   return data;
-}
+};
