@@ -1,45 +1,55 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { apiUrl as host, projectKey } from '../utils/constants';
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  // add other properties as needed
-}
+import { getProducts } from '../lib/products';
+import { Product } from './constants';
+import Pagination from './Pagination';
+import ProductCard from './ProductCard';
 
 const Catalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages] = useState(0);
 
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    fetch(`${host}/${projectKey}/products`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
+    getProducts()
       .then((data) => {
-        console.log(data);
-        setProducts(data.results);
+        if (Array.isArray(data)) {
+          setProducts(data);
+        } else {
+          setProducts([]);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        setProducts([]);
       });
   }, []);
 
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
-    <main>
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h1 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-white-900">
-          Catalog content
-        </h1>
-        {products.map((product) => (
-          <div key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-          </div>
-        ))}
+    <main className="bg-gray-100 p-4">
+      <div className="max-w-7xl mx-4 mx-auto px-4 md:px-12">
+        <h1 className="text-2xl font-bold text-center my-8">Product Catalog</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-16">
+          {products.map((product, index) => (
+            <div
+              key={product.id || index}
+              className="bg-white shadow-lg rounded-lg overflow-hidden"
+            >
+              <ProductCard product={product} index={index} />
+            </div>
+          ))}
+        </div>
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={onPageChange}
+      />
     </main>
   );
 };
