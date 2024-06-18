@@ -7,10 +7,7 @@ interface ProductCardProps {
   index: number;
 }
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => (
-  <div
-    key={product.id || index}
-    className="bg-white shadow-lg rounded-lg overflow-hidden"
-  >
+  <div key={product.id || index}>
     <div className="relative h-56">
       {product.masterData?.current?.masterVariant?.images?.[0]?.url ? (
         <Image
