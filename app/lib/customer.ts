@@ -1,7 +1,10 @@
 import { client } from '@/app/lib/ClientBuilder';
+import fetch from 'node-fetch';
+// import { isAuth } from '@/app/lib/isAuth';
 import { FormInputs } from '@/app/registration/constants';
 import { v4 } from 'uuid';
 import { customersEndpoint } from '../utils/constants';
+import { apiUrl, projectKey } from '../utils/constants';
 
 const generateId = () => {
   return v4();
@@ -57,4 +60,24 @@ export const createCustomer = async (data: FormInputs) => {
   } catch (error) {
     throw error;
   }
+};
+
+export const getCustomerData = async () => {
+  const token = localStorage.getItem('access_token');
+  const url = `${apiUrl}/${projectKey}/me`;
+
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch customer data!');
+  }
+
+  const data = await response.json();
+  return data;
 };

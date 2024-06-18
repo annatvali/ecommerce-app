@@ -6,6 +6,7 @@ import Button from './Button';
 import { isAuth } from '@/app/lib/isAuth';
 import { useAuth } from '@/app/lib/AuthContext';
 import { useEffect } from 'react';
+import { UserIcon } from '@heroicons/react/24/outline';
 
 const Navigation = ({
   isOpen,
@@ -94,12 +95,19 @@ const Navigation = ({
       </ul>
       <div className="flex flex-col md:flex-row md:space-x-4 items-center space-y-4 md:space-y-0 mt-4 md:mt-0">
         {isAuthenticated ? (
-          <Button
-            href={'/'}
-            text="Logout"
-            colorClass="from-red-600 to-red-500 hover:bg-gradient-to-bl"
-            onClick={handleLogoutClick}
-          />
+          <>
+            <Link href="/profile">
+              <div className="hover:text-blue-100" onClick={onLinkClick}>
+                <UserIcon className="h-6 w-6" />
+              </div>
+            </Link>
+            <Button
+              href={'/'}
+              text="Logout"
+              colorClass="from-red-600 to-red-500 hover:bg-gradient-to-bl"
+              onClick={handleLogoutClick}
+            />
+          </>
         ) : (
           <>
             <Button
