@@ -6,7 +6,7 @@ import Button from './Button';
 import { isAuth } from '@/app/lib/isAuth';
 import { useAuth } from '@/app/lib/AuthContext';
 import { useEffect } from 'react';
-import { UserIcon } from '@heroicons/react/24/outline';
+import { UserIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 const Navigation = ({
   isOpen,
@@ -64,7 +64,9 @@ const Navigation = ({
         isOpen ? 'flex' : 'hidden'
       } flex-col items-center w-full md:w-auto md:flex md:flex-row md:items-center md:gap-4 bg-gray-800 md:bg-transparent absolute md:relative top-0 left-0 md:top-auto md:left-auto p-4 md:p-0 mt-14 md:mt-0 z-10`}
     >
-      <ul className="flex flex-col md:flex-row md:space-x-4 items-center space-y-4 md:space-y-0">
+      <ul
+        className={`flex flex-col md:flex-row md:space-x-4 items-center space-y-4 md:space-y-0 mr-8 ${isOpen ? 'mr-0' : 'mr-8'}`}
+      >
         <li>
           <Link
             href="/"
@@ -72,6 +74,15 @@ const Navigation = ({
             onClick={onLinkClick}
           >
             Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/about-us"
+            className="hover:underline active:bg-blue-600"
+            onClick={onLinkClick}
+          >
+            About
           </Link>
         </li>
         <li>
@@ -85,11 +96,12 @@ const Navigation = ({
         </li>
         <li>
           <Link
-            href="/about-us"
-            className="hover:underline active:bg-blue-600"
+            href="/basket"
+            className="hover:underline active:bg-blue-600 flex items-center"
             onClick={onLinkClick}
           >
-            About
+            <ShoppingCartIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+            Basket
           </Link>
         </li>
       </ul>
