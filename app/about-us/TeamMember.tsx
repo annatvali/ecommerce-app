@@ -1,15 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
-export interface TeamMemberProps {
-  name: string;
-  role: string;
-  bio?: string;
-  contributions: string[];
-  collaborations: string[];
-  githubUsername: string;
-  profilePictureUrl: string;
-}
+import { TeamMemberProps } from './teamInfo';
 
 const TeamMember: React.FC<TeamMemberProps> = ({
   name,
