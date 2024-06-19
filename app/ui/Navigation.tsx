@@ -85,7 +85,7 @@ const Navigation = ({
         </li>
         <li>
           <Link
-            href="/about"
+            href="/about-us"
             className="hover:underline active:bg-blue-600"
             onClick={onLinkClick}
           >
