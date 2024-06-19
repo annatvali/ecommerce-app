@@ -1,23 +1,21 @@
-import {
-  FieldError,
-  UseFormRegister,
-  RegisterOptions,
-  FieldErrors,
-} from 'react-hook-form';
+import { UseFormRegister, RegisterOptions, FieldErrors } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import clsx from 'clsx';
 
+interface FormData {
+  [key: string]: string | number | boolean | undefined | null;
+}
 interface InputFieldProps {
   label: string;
   name: string;
   type: string;
   placeholder: string;
-  register: UseFormRegister<any>;
-  errors: FieldErrors<any>;
+  register: UseFormRegister<FormData>;
+  errors: FieldErrors;
   registerOptions: RegisterOptions;
 }
 
-export default function InputField({
+const InputField = ({
   label,
   name,
   type,
@@ -25,7 +23,7 @@ export default function InputField({
   register,
   errors,
   ...rest
-}: InputFieldProps): React.ReactElement {
+}: InputFieldProps): React.ReactElement => {
   return (
     <div className="relative mb-8">
       <label
@@ -53,4 +51,6 @@ export default function InputField({
       />
     </div>
   );
-}
+};
+
+export default InputField;
