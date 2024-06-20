@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { ClientBuilder, createClient } from '@commercetools/sdk-client-v2';
+import { ClientBuilder } from '@commercetools/sdk-client-v2';
 import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 
 import {

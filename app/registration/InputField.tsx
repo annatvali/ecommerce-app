@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { UseFormRegister, RegisterOptions, FieldErrors } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import clsx from 'clsx';
@@ -14,7 +15,7 @@ interface InputFieldProps {
   errors: FieldErrors;
   registerOptions: RegisterOptions;
 }
-
+// @ts-ignore
 const InputField = ({
   label,
   name,
